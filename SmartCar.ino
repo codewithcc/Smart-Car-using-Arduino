@@ -1,9 +1,9 @@
 /*
- * Project : Smart Car
- * Developer : Chanchal Roy
- * Date : 20th April 2023
- * GitHub : https://github.com/chexa12cc/Smart-Car-using-Arduino/
- */
+   Project : Smart Car
+   Developer : Chanchal Roy
+   Date : 20th April 2023
+   GitHub : https://github.com/chexa12cc/Smart-Car-using-Arduino/
+*/
 
 // Input signal pins of L298N
 #define IN1 3
@@ -29,7 +29,7 @@ void forward(float d)
   analogWrite(IN2, 0);
   analogWrite(IN3, 255);
   analogWrite(IN4, 0);
-  int t = d / 66.08 * 1000;
+  int t = d / 132.8 * 1000;
   delay(t);
   stopCar();
 }
@@ -41,30 +41,32 @@ void backward(float d)
   analogWrite(IN2, 255);
   analogWrite(IN3, 0);
   analogWrite(IN4, 255);
-  int t = d / 66.08 * 1000;
+  int t = d / 130.083 * 1000;
   delay(t);
   stopCar();
 }
 
 // Turns the Car to Right
-void turnRight(float d)
+void turnRight(int deg)
 {
   analogWrite(IN1, 255);
   analogWrite(IN2, 0);
   analogWrite(IN3, 0);
   analogWrite(IN4, 255);
-  delay(d * 1000);
+  int t = deg / 411.0 * 1000;
+  delay(t);
   stopCar();
 }
 
 // Turns the Car to Left
-void turnLeft(float d)
+void turnLeft(float deg)
 {
   analogWrite(IN1, 0);
   analogWrite(IN2, 255);
   analogWrite(IN3, 255);
   analogWrite(IN4, 0);
-  delay(d * 1000);
+  int t = deg / 395.0 * 1000;
+  delay(t);
   stopCar();
 }
 
@@ -74,14 +76,16 @@ void setup()
   pinMode(IN2, OUTPUT);
   pinMode(IN3, OUTPUT);
   pinMode(IN4, OUTPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, 0);
   stopCar();
 }
 
 void loop()
 {
-  while(itr < 1)
+  while (itr < 1)
   {
-    backward(50);
+    turnLeft(360);
     itr++;
   }
 }
