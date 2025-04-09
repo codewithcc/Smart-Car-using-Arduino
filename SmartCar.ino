@@ -2,7 +2,7 @@
    Project : Smart Car
    Developer : Chanchal Roy
    Date : 20th April 2023
-   GitHub : https://github.com/chexa12cc/Smart-Car-using-Arduino/
+   GitHub : https://github.com/codewithcc/Smart-Car-using-Arduino/
 */
 
 // Input signal pins of L298N
